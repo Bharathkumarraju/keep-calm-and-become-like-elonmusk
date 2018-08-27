@@ -42,6 +42,23 @@ print(movies)
 movies.insert(1,"Geetha Govindham")
 print(movies)
 
+#use reverse
+movies.reverse()
+print(movies)
+
+#use index
+movies.sort()
+print(movies)
+
+print("")
+#use count
+movies.count(movies)
+print(movies)
+
+'''
+Python lists contain data of mixed type
+
+'''
 
 
 
