@@ -3,3 +3,5 @@
 ```
 Learn python like a nerd
 ```
+
+![ElonMusk](keep-calm-and-be-like-elon-musk.jpg?raw=true)
