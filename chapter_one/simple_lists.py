@@ -57,10 +57,42 @@ print(movies)
 
 '''
 Python lists contain data of mixed type
-
 '''
 
+movies.insert(1,"1975")
+print(movies)
 
+movies.insert(3,"1878")
+movies.insert(5,"1991")
+movies.insert(7,"2001")
+movies.insert(9,"2010")
+movies.insert(11,"2011")
+movies.insert(13,"2016")
+print(movies)
+print("")
+
+print("use of for loop")
+print("")
+# Time to use for loop
+for fav_movies in movies:
+    print(fav_movies)
+
+print("")
+print("")
+print("use of while loop")
+print("")
+# how to use while loop
+count = 0
+while count < len(movies):
+    print(movies[count])
+    count = count+1
+
+
+print("")
+print(movies[2])
+
+print("")
+print(movies)
 
 
 
