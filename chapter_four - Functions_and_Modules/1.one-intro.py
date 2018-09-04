@@ -24,13 +24,17 @@ print(bool(1))
 print()
 
 def search4vowels():
+    """ Display any vowels found in an asked-for word """
     vowels = set('aeiouaeouiiouaei')
     word = input('please enter a  word to find vowels in it: ')
     found = vowels.intersection(set(word))
     for i in found:
         print(i)
 
+
 search4vowels()
+
+
 
 
 
