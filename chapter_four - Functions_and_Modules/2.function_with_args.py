@@ -5,8 +5,8 @@ def search4vowels(word):
     for vowel in found:
         print(vowel)
 
-def spaces(spaces):
-    for i in range(spaces):
+def spaces(spaces_count):
+    for i in range(spaces_count):
         print()
 
 
