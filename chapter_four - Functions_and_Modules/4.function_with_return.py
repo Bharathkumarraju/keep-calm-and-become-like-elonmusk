@@ -47,3 +47,49 @@ search_the_word("Hyma")
 
 search_the_word("arun")
 
+for spaces in range(5):
+    print()
+
+
+
+def word_search(hanuman_word):
+    vow=set('aaeeiiooouu')
+    return print(vow.intersection(set(hanuman_word)))
+
+word_search('raju')
+
+word_search('sky')
+print()
+
+# Recall the built-in data structures list, tuple, set, tuple
+print()
+# Lists
+l = list()
+print(l)
+l = [1, 2, 3]
+print(l)
+
+print()
+# Dictionaries
+d = dict()
+print(d)
+d = { 'first': 1, 'second': 2, 'third': 3}
+print(d)
+
+print()
+# sets
+s = set()
+print(s)
+s = {1, 2, 3}
+print(s)
+
+print()
+# tuples
+t = tuple()
+print(t)
+t = (1, 2, 3)
+print(t)
+
+
+
+
