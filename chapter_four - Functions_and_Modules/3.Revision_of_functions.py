@@ -46,3 +46,5 @@ print()
 search_for_vowels("Sri anjaneyam, prasanna anjaneyam Oum Bhajrang bhali")
 print()
 
+search_for_vowels('hello ellen')
+
