@@ -90,6 +90,21 @@ print(t)
 t = (1, 2, 3)
 print(t)
 
+for i in range(5):
+    print()
+
+x=list()
+print(x)
+
+y=tuple()
+print(y)
+
+z=set()
+print(z)
+
+w=dict()
+print(w)
+
 
 
 
