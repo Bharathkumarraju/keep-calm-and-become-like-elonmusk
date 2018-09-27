@@ -8,5 +8,16 @@ search4letters("Raju")
 
 search4letters("Raju", "HaRe Rama Hare Krisha u")
 
+search4letters("hanuman chaliesa", "chaleesa")
+
+search4letters("Jai Bhajrang Bhalee")
+
+print()
+search4letters("India", "BKR")
+print()
+
+
+
+
 
 
