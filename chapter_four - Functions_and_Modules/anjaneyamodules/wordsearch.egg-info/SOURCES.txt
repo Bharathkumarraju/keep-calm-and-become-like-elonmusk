@@ -1,0 +1,7 @@
+README.txt
+setup.py
+wordsearch.py
+wordsearch.egg-info/PKG-INFO
+wordsearch.egg-info/SOURCES.txt
+wordsearch.egg-info/dependency_links.txt
+wordsearch.egg-info/top_level.txt
