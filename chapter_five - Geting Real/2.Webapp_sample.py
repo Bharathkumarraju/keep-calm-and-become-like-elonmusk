@@ -1,5 +1,5 @@
 from flask import Flask
-import vsearch
+import wordsearch
 
 hanumanapp = Flask(__name__)
 
@@ -8,9 +8,12 @@ def hello() -> str:
     return "SRI ANJANEYAM"
 
 @hanumanapp.route('/search')
-def do_serch() ->str:
-    vsearch.search4letters('Sri Anjaneyam', 'Bhajrang Bhaleu')
+def do_serch() -> str:
+    return str(wordsearch.search4letters("Hanuman", "Chaleesaaa"))
 
+@hanumanapp.route('/search4')
+def search_do() -> str:
+    return str(wordsearch.search4letters('life, the universe, and everything', 'eiru,!'))
 
 hanumanapp.run()
 
