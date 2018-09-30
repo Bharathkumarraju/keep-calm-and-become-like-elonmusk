@@ -1,12 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import wordsearch
 
 
 vayuputhraapp = Flask(__name__)
 
 @vayuputhraapp.route('/')
-def hello():
-    return "Jai hanuman 123"
+def hello() -> '302':
+    return redirect('/entry')
 
 @vayuputhraapp.route('/search4', methods=['POST'])
 def search_do() -> 'html':
@@ -24,3 +24,4 @@ def entry_page() -> 'html':
     return render_template('entry.html', the_title='Welcome to the search4letters on the web!')
 
 vayuputhraapp.run(debug=True)
+
