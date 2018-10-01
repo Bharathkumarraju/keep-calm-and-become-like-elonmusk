@@ -24,6 +24,12 @@ def search_do() -> 'html':
 def entry_page() -> 'html':
     return render_template('entry.html', the_title='Welcome to the search4letters on the web!')
 
+@vayuputhraapp.route('/viewlog')
+def view_the_log() -> str:
+    with open('webappsearch.log') as log:
+        contents = log.read()
+        return contents
+
 if __name__ == '__main__':
     vayuputhraapp.run(debug=True)
 
