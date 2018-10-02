@@ -1,8 +1,3 @@
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'a', 'i', 'e'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'n', 'a', 'm'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {' ', 's', 'e', 'a', 'm', 'n'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> set()
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'a', 'i', 'e'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'a', 'i', 'e'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'j', 'i', 'e', 'a', 'n'}
-<Request 'http://127.0.0.1:5000/search4' [POST]> {'i', 'd', 'a', 'h', 't', 'n', 'm', 'u', ' '}
+ImmutableMultiDict([('phrase', 'sri anjaneyam'), ('letters', 'prasanna anjaneyam')])|127.0.0.1|Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36|{'s', 'a', 'm', 'e', 'n', 'y', ' ', 'r', 'j'}
+ImmutableMultiDict([('phrase', 'sri anjaneyam prasanna anjaneyam'), ('letters', 'prabha divya kaayam prakeerthi pradhaayam')])|127.0.0.1|Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36|{'a', 'm', 'e', 'y', ' ', 'p', 'r', 'i'}
+ImmutableMultiDict([('phrase', 'sri anjaneyam prasanna anjaneyam rama'), ('letters', 'prabha divya kaayam prakeerthi pradhaayam lakshmana')])|127.0.0.1|Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36|{'s', 'a', 'm', 'e', 'n', 'y', ' ', 'p', 'r', 'i'}
