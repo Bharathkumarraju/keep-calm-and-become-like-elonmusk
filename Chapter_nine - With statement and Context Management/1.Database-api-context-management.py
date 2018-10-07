@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, escape
 from wordsearch import search4letters
 
+# If your class defines dunder "enter" and dunder "exit" it's a context manager
+
 vayuputhraapp = Flask(__name__)
 
 def log_request(req: 'flask_request', res: str) -> None:
