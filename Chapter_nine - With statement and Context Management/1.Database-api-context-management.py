@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, escape
 from wordsearch import search4letters
+from dbcm import UseDataBase
+import mysql.connector
 
 # If your class defines dunder "enter" and dunder "exit" it's a context manager
 
@@ -13,19 +15,19 @@ def log_request(req: 'flask_request', res: str) -> None:
         'database': 'wordsearchlogDB'
     }
 
-    import mysql.connector
-    conn = mysql.connector.connect(**dbconfig)
-    cursor = conn.cursor()
-    _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
-    cursor.execute(_SQL,(
-        req.form['phrase'],
-        req.form['letters'],
-        req.remote_addr,
-        req.user_agent.browser,
-        res, ))
-    conn.commit()
-    cursor.close()
-    conn.close()
+#    conn = mysql.connector.connect(**dbconfig)
+#    cursor = conn.cursor()
+    with UseDataBase(dbconfig) as cursor:
+        _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
+        cursor.execute(_SQL,(
+            req.form['phrase'],
+            req.form['letters'],
+            req.remote_addr,
+            req.user_agent.browser,
+            res, ))
+#    conn.commit()
+#    cursor.close()
+#    conn.close()
 
 #    with open('webappsearch.log','a') as log:
 #        print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
