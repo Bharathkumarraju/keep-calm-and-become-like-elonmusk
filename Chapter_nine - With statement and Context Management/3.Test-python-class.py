@@ -9,7 +9,7 @@ dbconfig = {
 }
 print("")
 with UseDataBase(dbconfig) as cursor:
-    _SQL = """show tables"""
+    _SQL = """select * from log"""
     cursor.execute(_SQL)
     data = cursor.fetchall()
 
