@@ -1,36 +1,26 @@
 from flask import Flask, render_template, request, escape
 from wordsearch import search4letters
 from dbcm import UseDataBase
-import mysql.connector
 
 # If your class defines dunder "enter" and dunder "exit" it's a context manager
 
 vayuputhraapp = Flask(__name__)
 
+vayuputhraapp.config['dbconfig'] = {
+    'host': '127.0.0.1',
+    'user': 'wordsearch',
+    'password': 'wordsearchpassword',
+    'database': 'wordsearchlogDB' }
 def log_request(req: 'flask_request', res: str) -> None:
-    dbconfig = {
-        'host': '127.0.0.1',
-        'user': 'wordsearch',
-        'password': 'wordsearchpassword',
-        'database': 'wordsearchlogDB'
-    }
-
-#    conn = mysql.connector.connect(**dbconfig)
-#    cursor = conn.cursor()
-    with UseDataBase(dbconfig) as cursor:
+    """Log details of web requests and results"""
+    with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
         _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
         cursor.execute(_SQL,(
             req.form['phrase'],
             req.form['letters'],
             req.remote_addr,
             req.user_agent.browser,
-            res, ))
-#    conn.commit()
-#    cursor.close()
-#    conn.close()
-
-#    with open('webappsearch.log','a') as log:
-#        print(req.form, req.remote_addr, req.user_agent, res, file=log, sep='|')
+            res))
 
 @vayuputhraapp.route('/search4', methods=['POST'])
 def search_do() -> 'html':
@@ -50,18 +40,17 @@ def entry_page() -> 'html':
     return render_template('entry.html', the_title='Welcome to the search4letters on the web!')
 
 @vayuputhraapp.route('/viewlog')
-def view_the_log() -> str:
-    contents=[]
-    with open('webappsearch.log') as log:
-        for line in log:
-            contents.append([])
-            for item in line.split('|'):
-                contents[-1].append(escape(item))
-    titles = ('Formdata', 'Remote_addr', 'User_agent', 'Results')
-    return render_template('viewlog.html',
+def view_the_log() -> 'html':
+   with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
+       _SQL1 = """select phrase, letters, ip, browser_string, results from log"""
+       cursor.execute(_SQL1)
+       contents = cursor.fetchall()
+   titles = ('Phrase', 'Letters', 'Remote_addr', 'User_agent', 'Results')
+   return render_template('viewlog.html',
                            the_title='View Log',
                            the_row_titles=titles,
                            the_data=contents)
+
 if __name__ == '__main__':
     vayuputhraapp.run(debug=True)
 
