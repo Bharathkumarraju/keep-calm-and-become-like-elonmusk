@@ -29,48 +29,18 @@ def check_status() -> str:
         return 'You are currently logged in'
     return "You are not logged in"
 
-
-
-
-
 @bharathapp.route('/page1')
 def page1() -> str:
-    if 'logged_in' in session:
-        return 'This is page1'
-    return 'You are not logged in'
+    return "this is page1"
 
 @bharathapp.route('/page2')
 def page2() -> str:
-    if 'logged_in' in session:
-        return 'This is Page 2'
-    return 'You are not logged in'
+    return "this is page2"
 
 @bharathapp.route('/page3')
 def page3() -> str:
-    if 'logged_in' in session:
-        return 'This is page 3'
-    return 'You are not logged in'
+    return "this is page3"
 
-
-
-# Instead of repeating condition in all functions lets write a separate function and call that function
-
-def check_logged_in() -> bool:
-    if 'logged_in' in session:
-        return True
-    return False
-
-@bharathapp.route('/page4')
-def page4() -> str:
-    if not check_logged_in():
-        return 'You are not logged in'
-    return 'This is page4'
-
-@bharathapp.route('/page5')
-def page5() -> str:
-    if not check_logged_in():
-        return 'You are not logged in'
-    return 'This is page5'
 
 if __name__ == '__main__':
     bharathapp.run(debug=True)
