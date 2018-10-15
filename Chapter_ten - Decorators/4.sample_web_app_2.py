@@ -4,6 +4,7 @@ no matter how many browsers interact with our webapp,
 each browsers server side data is managed for us by Flask whenever session is used
 """
 from flask import Flask, session
+from checker import check_logged_in
 bharathapp = Flask(__name__)
 
 @bharathapp.route('/')
@@ -23,21 +24,24 @@ def do_logout() -> str:
     return "you are now logged out"
 
 
-@bharathapp.route('/status')
-def check_status() -> str:
-    if 'logged_in' in session:
-        return 'You are currently logged in'
-    return "You are not logged in"
+#@bharathapp.route('/status')
+#def check_status() -> str:
+#    if 'logged_in' in session:
+#        return 'You are currently logged in'
+#    return "You are not logged in"
 
 @bharathapp.route('/page1')
+@check_logged_in
 def page1() -> str:
     return "this is page1"
 
 @bharathapp.route('/page2')
+@check_logged_in
 def page2() -> str:
     return "this is page2"
 
 @bharathapp.route('/page3')
+@check_logged_in
 def page3() -> str:
     return "this is page3"
 
