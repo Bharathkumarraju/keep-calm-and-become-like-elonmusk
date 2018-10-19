@@ -13,7 +13,7 @@ chars = string.ascii_letters + string.digits + '!@#$%^*()+'
 
 print(chars)
 
-url = 'http://www.esevaonline.ap.gov.in/epay/ConsData.jsp'
+url = 'http://test/data.jsp'
 
 list1 = ["hanuman", "anjaneya", "bhajarang", "Maharaj-ji"]
 
