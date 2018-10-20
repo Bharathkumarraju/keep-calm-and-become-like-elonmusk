@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, escape
+from flask import Flask, render_template, request, escape, session
 from wordsearch import search4letters
 from dbcm import UseDataBase
+from time import sleep
 
 # If your class defines dunder "enter" and dunder "exit" it's a context manager
 
@@ -11,8 +12,20 @@ vayuputhraapp.config['dbconfig'] = {
     'user': 'wordsearch',
     'password': 'wordsearchpassword',
     'database': 'wordsearchlogDB' }
+
+@vayuputhraapp.route('/login')
+def do_login() -> str:
+    session['logged_in'] = True
+    return 'You are now logged in'
+@vayuputhraapp.route('/logout')
+def do_logout() -> str:
+    session.pop('logged_in')
+    return 'You are now loggedout'
+
 def log_request(req: 'flask_request', res: str) -> None:
     """Log details of web requests and results"""
+#    sleep(15)
+#    raise
     with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
         _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
         cursor.execute(_SQL,(
@@ -50,6 +63,7 @@ def view_the_log() -> 'html':
                            the_title='View Log',
                            the_row_titles=titles,
                            the_data=contents)
+vayuputhraapp.secret_key = 'Srianjaneyamprasannaanjaneyam'
 
 if __name__ == '__main__':
     vayuputhraapp.run(debug=True)
