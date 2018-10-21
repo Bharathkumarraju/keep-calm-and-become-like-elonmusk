@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, escape, session
 from wordsearch import search4letters
-from dbcm import UseDataBase
+from dbcm import UseDataBase, ConnectionError
 from time import sleep
-import mysql.connector
+
 
 # If your class defines dunder "enter" and dunder "exit" it's a context manager
 
@@ -68,10 +68,11 @@ def view_the_log() -> 'html':
                            the_title='View Log',
                            the_row_titles=titles,
                            the_data=contents)
-   except mysql.connector.errors.InterfaceError as err:
+   except ConnectionError as err:
        print("Is you database is switched on? Error:", str(err))
    except Exception as err:
        print("Soemthing went wrong", str(err))
+   return 'Error'
 vayuputhraapp.secret_key = 'Srianjaneyamprasannaanjaneyam'
 
 if __name__ == '__main__':
