@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, escape, session
 from wordsearch import search4letters
-from dbcm import UseDataBase, ConnectionError
+from dbcm import UseDataBase, ConnectionError, CredentialsError, SQLError
 from time import sleep
 
 
@@ -11,13 +11,14 @@ vayuputhraapp = Flask(__name__)
 vayuputhraapp.config['dbconfig'] = {
     'host': '127.0.0.1',
     'user': 'wordsearch',
-    'password': 'wordsearchpassword123',
+    'password': 'wordsearchpassword',
     'database': 'wordsearchlogDB' }
 
 @vayuputhraapp.route('/login')
 def do_login() -> str:
     session['logged_in'] = True
     return 'You are now logged in'
+
 @vayuputhraapp.route('/logout')
 def do_logout() -> str:
     session.pop('logged_in')
@@ -25,7 +26,7 @@ def do_logout() -> str:
 
 def log_request(req: 'flask_request', res: str) -> None:
     """Log details of web requests and results"""
-#    sleep(15)
+    sleep(9)
 #    raise Exception("Something awfull just happened")
     with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
         _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
@@ -70,6 +71,10 @@ def view_the_log() -> 'html':
                            the_data=contents)
    except ConnectionError as err:
        print("Is you database is switched on? Error:", str(err))
+   except CredentialsError as err:
+       print("Username/Password issues", str(err))
+   except SQLError as err:
+       print("Is your Query is correct?", str(err))
    except Exception as err:
        print("Soemthing went wrong", str(err))
    return 'Error'
