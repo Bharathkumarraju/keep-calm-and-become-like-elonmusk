@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, escape, session
 from wordsearch import search4letters
 from dbcm import UseDataBase, ConnectionError, CredentialsError, SQLError
 from time import sleep
-
+from threading import Thread
+from flask import copy_current_request_context
 
 # If your class defines dunder "enter" and dunder "exit" it's a context manager
 
@@ -24,27 +25,31 @@ def do_logout() -> str:
     session.pop('logged_in')
     return 'You are now loggedout'
 
-def log_request(req: 'flask_request', res: str) -> None:
-    """Log details of web requests and results"""
-    sleep(9)
-#    raise Exception("Something awfull just happened")
-    with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
-        _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
-        cursor.execute(_SQL,(
-            req.form['phrase'],
-            req.form['letters'],
-            req.remote_addr,
-            req.user_agent.browser,
-            res))
+
 
 @vayuputhraapp.route('/search4', methods=['POST'])
 def search_do() -> 'html':
+    @copy_current_request_context
+    def log_request(req: 'flask_request', res: str) -> None:
+        """Log details of web requests and results"""
+        sleep(9)
+    #    raise Exception("Something awfull just happened")
+        with UseDataBase(vayuputhraapp.config['dbconfig']) as cursor:
+            _SQL = """insert into log(phrase, letters, ip, browser_string, results) values(%s, %s, %s, %s, %s)"""
+            cursor.execute(_SQL,(
+                req.form['phrase'],
+                req.form['letters'],
+                req.remote_addr,
+                req.user_agent.browser,
+                res))
     phrase = request.form['phrase']
     letters = request.form['letters']
     title = 'Here are your results:'
     results = str(search4letters(phrase, letters))
     try:
-        log_request(request, results)
+#        log_request(request, results)
+        t = Thread(target=log_request, args=(request, results))
+        t.start()
     except Exception as err:
         print('***** Logging failed with the error', str(err))
     return render_template('results.html',
