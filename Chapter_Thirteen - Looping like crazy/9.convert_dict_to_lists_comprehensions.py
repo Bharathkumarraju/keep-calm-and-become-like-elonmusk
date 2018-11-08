@@ -87,3 +87,13 @@ print("")
 more_destz = [ destinations.title() for destinations in flights.values()]
 print(more_destz)
 
+print("")
+print("")
+
+print("********** Flight times comprehension ****************")
+print("")
+
+times_of_flights = [ convert2ampm(flight_time)for flight_time in flights.keys()]
+print(times_of_flights)
+print("")
+
