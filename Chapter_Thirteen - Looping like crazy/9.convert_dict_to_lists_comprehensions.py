@@ -76,7 +76,7 @@ print("")
 print(" ************* How to use Comprehensions ***************** ")
 print("")
 
-# How to use Comprehensions
+# How to use List Comprehensions
 
 more_dests = [ dest for dest in flights.values() ]
 print(more_dests)
@@ -96,4 +96,53 @@ print("")
 times_of_flights = [ convert2ampm(flight_time)for flight_time in flights.keys()]
 print(times_of_flights)
 print("")
+print("")
+# how to use dict comprehensions
+
+more_flights={ k:v for k,v  in flights.items()}
+print(more_flights)
+
+print("\t"*10)
+print("\t"*18)
+
+
+more_flightz={ convert2ampm(k): v.title() for k,v in flights.items()}
+print(more_flightz)
+
+print("")
+print("")
+
+just_freeport = {}
+for k,v in flights.items():
+    if v=='FREEPORT':
+        just_freeport[convert2ampm(k)] = v.title()
+print(just_freeport)
+print("")
+print("Dict comprehensions with filter conditions")
+print("")
+
+# Extend the comprehensions with Filters using the dictionary comprehensions
+just_freeeport = { convert2ampm(k): v.title() for k,v in flights.items() if v == 'FREEPORT'}
+print(just_freeeport)
+print("")
+print("")
+print("In more readable form")
+print("")
+
+# Extend the comprehensions with Filter conditions using the dictionary comprehensions with more readable form
+
+just_freeeeeport = { convert2ampm(k):v.title()
+                     for k,v in flights.items()
+                     if v == 'FREEPORT'
+                   }
+print(just_freeeeeport)
+print("")
+print("Recall the work")
+print("")
+
+fts = { convert2ampm(k):v.title() for k,v in flights.items()}
+print(fts)
+print("")
+print("")
+
 
