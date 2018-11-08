@@ -73,7 +73,17 @@ for i in flights.values():
 print(flights_destonationzz)
 print("")
 print("")
+print(" ************* How to use Comprehensions ***************** ")
+print("")
 
+# How to use Comprehensions
 
+more_dests = [ dest for dest in flights.values() ]
+print(more_dests)
+print("")
+print(" All about fucking comprehensions ")
+print("")
 
+more_destz = [ destinations.title() for destinations in flights.values()]
+print(more_destz)
 
