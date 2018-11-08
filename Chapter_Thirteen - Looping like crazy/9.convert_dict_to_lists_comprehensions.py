@@ -36,3 +36,44 @@ destinations = []
 for dest in flights.values():
     destinations.append(dest.title())
 print(destinations)
+
+print("\t"*9)
+print("\t"*18)
+print("\t"*36)
+
+# how to get times and destinations separately
+
+flight_timez=[]
+
+for i in flights.keys():
+    flight_timez.append(i)
+print(flight_timez)
+print("\t"*90)
+
+
+flight_timezz=[]
+for i in flights.keys():
+    flight_timezz.append(convert2ampm(i))
+print(flight_timezz)
+print("\t"*199)
+print("")
+
+
+flights_destinations=[]
+for i in flights.values():
+    flights_destinations.append(i)
+print(flights_destinations)
+
+print("")
+print("")
+
+flights_destonationzz=[]
+for i in flights.values():
+    flights_destonationzz.append(i.title())
+print(flights_destonationzz)
+print("")
+print("")
+
+
+
+
