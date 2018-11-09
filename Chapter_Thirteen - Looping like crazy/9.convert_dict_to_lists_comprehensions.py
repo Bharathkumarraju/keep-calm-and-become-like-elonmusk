@@ -157,4 +157,48 @@ print("")
 destzz = set(fts.values())
 print(destzz)
 
+print("")
+
+
 print("\n"*3)
+
+
+print("Get the time of West End")
+print("\n"*2)
+
+west = []
+for k,v in fts.items():
+    if v == 'West End':
+        west.append(k)
+print(west)
+
+print("Lets use comprehension to get the west end time only as below")
+print("")
+
+west2 = [ k for k,v in fts.items() if v == 'West End']
+print(west2)
+print("\n"*2)
+
+for i in destzz:
+     print(i)
+
+print("\n"*3)
+
+for dest in set(fts.values()):
+    print(dest, '-->', [ k for k,v in fts.items() if v == dest])
+
+print("\n"*3)
+
+when = {}
+
+for dest in set(fts.values()):
+    when[dest] = [ k for k,v in fts.items() if v == dest]
+
+print(when)
+
+print("\n"*3)
+print("Dictionary comprehension")
+print("Outer dict comprehension contains an inner list comprehension")
+
+when2 = { dest: [k for k,v in fts.items() if v == dest] for dest in set(fts.values())}
+print(when2)
