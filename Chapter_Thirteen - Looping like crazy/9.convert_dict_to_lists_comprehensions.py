@@ -146,3 +146,15 @@ print("")
 print("")
 
 
+
+# Deal with complexity the python way --> pythons way --> Dictionary of Dictionaries
+
+for i in set(fts.values()):
+    print(i)
+
+print("")
+print("")
+destzz = set(fts.values())
+print(destzz)
+
+print("\n"*3)
