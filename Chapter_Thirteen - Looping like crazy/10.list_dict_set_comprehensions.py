@@ -73,12 +73,3 @@ print("")
 print_title = [ i.title() for i in data2 ]
 print(print_title)
 print("\n"*2)
-
-
-
-
-
-
-
-
-
