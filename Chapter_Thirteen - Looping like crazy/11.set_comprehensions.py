@@ -19,3 +19,30 @@ print(found)
 
 
 print("\n"*2)
+
+
+# How to use Set Comprehension here
+found2 = { i for i in vowels  if i in message }
+print(found2)
+
+print("\n"*2)
+
+# When a code is surrounded by [ and ] then you are looking at list comprehension
+
+# when a code is surrounded by { and } then you are looking at either a set or a dictionary comprehension
+
+# A dictcomp is easy to spot thanks to its use of the colon character as a delimiter
+
+# tuple comprehensions don't exists at all
+
+# [ .. code .. ] --> I am a list comprehension
+
+# { .. code .. } --> I am a dict comprehension
+
+# ( .. code .. ) --> I am a special case
+
+# Tuples are immutable, Once a tuple is created it can not be changed.
+
+# Python's four built-in data structures(tuples, lists, sets, and dictionaries) can be put to many uses.
+
+#

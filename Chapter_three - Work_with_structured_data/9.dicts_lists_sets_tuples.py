@@ -8,17 +8,20 @@ having said that immutable data structures can often be useful
 
 # Tuples are surrounded by parentheses where as lists are surrounded by square brackets
 
-print()
+# lists are surrounded by square brackets
+print("lists are surrounded by square brackets")
 vowels = ['a', 'e', 'i', 'o', 'u']
 print(type(vowels))
 print(vowels)
 
-print()
+# Tuples are surrounded by parentheses
+print("# Tuples are surrounded by parentheses")
 vowels = ('a', 'e', 'i', 'o', 'u')
 print(type(vowels))
 print(vowels)
 
-print()
+# Dictionaries are surrounded by braces with colon
+print("Dictionaries are surrounded by braces with colon")
 vowels = {'a': 1, 'e': 2, 'i': 1, 'o': 0, 'u': 10}
 print(type(vowels))
 print(vowels.items())
@@ -26,7 +29,8 @@ for i, j in vowels.items():
     print(i, "value is ", j )
 
 
-print()
+# Sets are surrounded by braces
+print("Sets are surrounded by braces")
 vowels = {'a', 'e', 'i', 'o', 'u'}
 print(type(vowels))
 print(vowels)
