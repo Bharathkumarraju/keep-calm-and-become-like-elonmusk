@@ -34,3 +34,11 @@ print("")
 # Rewrite the above code using generator.
 for response in (requests.get(url)for url in urls):
     print(len(response.content), '-->', response.status_code, '-->', response.url)
+
+# Functions with Generators
+
+from url_utils import gen_from_urls
+urlss = ('http://google.com', 'http://twitter.com', 'http://facebook.com')
+for resp_len, status, url in gen_from_urls(urlss):
+    print(resp_len, status, url)
+
