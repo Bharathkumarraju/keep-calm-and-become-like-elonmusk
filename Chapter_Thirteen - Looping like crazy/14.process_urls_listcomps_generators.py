@@ -38,7 +38,7 @@ for response in (requests.get(url)for url in urls):
 # Functions with Generators
 
 from url_utils import gen_from_urls
+
 urlss = ('http://google.com', 'http://twitter.com', 'http://facebook.com')
 for resp_len, status, url in gen_from_urls(urlss):
     print(resp_len, status, url)
-
